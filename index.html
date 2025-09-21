@@ -689,6 +689,15 @@
     </div>
 
     <script>
+        // Reproduce la música después de cualquier interacción del usuario
+    document.addEventListener('click', function () {
+        const music = document.getElementById('backgroundMusic');
+        if (music.paused) {
+            music.play().catch(err => {
+                console.log("No se pudo reproducir automáticamente:", err);
+            });
+        }
+    }, { once: true }); // Solo una vez
         // Crear estrellas
         function createStars() {
             const starsContainer = document.querySelector('.stars');
