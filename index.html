@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Jardín Celestial de Flores</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Poppins:wght@300;400;600&family=Alex+Brush&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: #000;
+            color: white;
+        }
+
+        /* Fondo galaxia fijo */
+        .galaxy-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 25% 25%, #4a00e0 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, #8e2de2 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+            z-index: -10;
+        }
+
+        /* Estrellas animadas */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -5;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        .star.big {
+            width: 3px;
+            height: 3px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .star.medium {
+            width: 2px;
+            height: 2px;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+        }
+
+        .star.small {
+            width: 1px;
+            height: 1px;
+            box-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Flores CSS (girasoles realistas) */
+        .sunflower {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            z-index: 1;
+            animation: sway 4s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .sunflower:hover {
+            transform: scale(1.3) rotate(15deg);
+        }
+
+        .sunflower-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #8B4513 0%, #654321 50%, #2F1B14 100%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .sunflower-petal {
+            position: absolute;
+            width: 12px;
+            height: 25px;
+            background: linear-gradient(to bottom, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 50%;
+            left: 50%;
+            transform-origin: 50% 100%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .sunflower-petal:nth-child(1) { transform: translate(-50%, -100%) rotate(0deg); }
+        .sunflower-petal:nth-child(2) { transform: translate(-50%, -100%) rotate(30deg); }
+        .sunflower-petal:nth-child(3) { transform: translate(-50%, -100%) rotate(60deg); }
+        .sunflower-petal:nth-child(4) { transform: translate(-50%, -100%) rotate(90deg); }
+        .sunflower-petal:nth-child(5) { transform: translate(-50%, -100%) rotate(120deg); }
+        .sunflower-petal:nth-child(6) { transform: translate(-50%, -100%) rotate(150deg); }
+        .sunflower-petal:nth-child(7) { transform: translate(-50%, -100%) rotate(180deg); }
+        .sunflower-petal:nth-child(8) { transform: translate(-50%, -100%) rotate(210deg); }
+        .sunflower-petal:nth-child(9) { transform: translate(-50%, -100%) rotate(240deg); }
+        .sunflower-petal:nth-child(10) { transform: translate(-50%, -100%) rotate(270deg); }
+        .sunflower-petal:nth-child(11) { transform: translate(-50%, -100%) rotate(300deg); }
+        .sunflower-petal:nth-child(12) { transform: translate(-50%, -100%) rotate(330deg); }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-8deg) translateY(0px); }
+            25% { transform: rotate(5deg) translateY(-15px); }
+            50% { transform: rotate(-3deg) translateY(-8px); }
+            75% { transform: rotate(7deg) translateY(-20px); }
+        }
+
+        /* Flores amarillas pequeñas */
+        .yellow-flower {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            z-index: 1;
+            animation: gentleSway 5s ease-in-out infinite;
+        }
+
+        .flower-petals {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .flower-petal {
+            position: absolute;
+            width: 8px;
+            height: 12px;
+            background: linear-gradient(to bottom, #FFFF99 0%, #FFD700 100%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform-origin: 50% 100%;
+        }
+
+        .flower-petal:nth-child(1) { transform: translate(-50%, -100%) rotate(0deg); }
+        .flower-petal:nth-child(2) { transform: translate(-50%, -100%) rotate(72deg); }
+        .flower-petal:nth-child(3) { transform: translate(-50%, -100%) rotate(144deg); }
+        .flower-petal:nth-child(4) { transform: translate(-50%, -100%) rotate(216deg); }
+        .flower-petal:nth-child(5) { transform: translate(-50%, -100%) rotate(288deg); }
+
+        .flower-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            background: #FF8C00;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes gentleSway {
+            0%, 100% { transform: rotate(-3deg) translateY(0px); }
+            50% { transform: rotate(3deg) translateY(-5px); }
+        }
+
+        /* Margaritas */
+        .daisy {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            z-index: 1;
+            animation: daisySway 6s ease-in-out infinite;
+        }
+
+        .daisy-petal {
+            position: absolute;
+            width: 6px;
+            height: 15px;
+            background: linear-gradient(to bottom, #FFFACD 0%, #F0E68C 100%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform-origin: 50% 100%;
+        }
+
+        .daisy-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes daisySway {
+            0%, 100% { transform: rotate(-2deg) translateY(0px); }
+            33% { transform: rotate(2deg) translateY(-3px); }
+            66% { transform: rotate(-1deg) translateY(-1px); }
+        }
+
+        /* Contenedor principal */
+        .main-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Secciones */
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Sección de título */
+        .hero-section {
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+        }
+
+        .main-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            color: #FFD700;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+            animation: glow 3s ease-in-out infinite alternate;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: titleFadeIn 2s ease-out 0.5s forwards, glow 3s ease-in-out infinite alternate;
+        }
+
+        .subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #E6E6FA;
+            opacity: 0;
+            animation: fadeInUp 2s ease-out 1.5s forwards;
+        }
+
+        @keyframes titleFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 30px rgba(255, 215, 0, 0.8); }
+            100% { text-shadow: 0 0 50px rgba(255, 215, 0, 1), 0 0 70px rgba(255, 215, 0, 0.8); }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mensajes románticos */
+        .love-message {
+            max-width: 900px;
+            text-align: center;
+            margin: 3rem 0;
+            opacity: 0;
+            transform: translateY(100px);
+        }
+
+        .love-message.visible {
+            animation: messageAppear 2s ease-out forwards;
+        }
+
+        @keyframes messageAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .love-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #FFB6C1;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(255, 182, 193, 0.5);
+        }
+
+        .love-text.typewriter {
+            font-family: 'Great Vibes', cursive;
+            border-right: 2px solid #FFD700;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(40) 1s forwards, blink 1s infinite;
+            max-width: 0;
+        }
+
+        .love-text.special {
+            font-family: 'Alex Brush', cursive;
+            font-size: 2.8rem;
+            color: #FFEAA7;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FF6B6B, #FFD700);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes typing {
+            to { max-width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* Corazones flotantes */
+        .floating-heart {
+            position: absolute;
+            color: #FF69B4;
+            font-size: 2rem;
+            animation: floatHeart 6s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Pétalos cayendo */
+        .falling-petal {
+            position: absolute;
+            width: 8px;
+            height: 12px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            animation: petalFall 8s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes petalFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Efectos de parallax */
+        .parallax-element {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .flower-field {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Sección especial con partículas */
+        .particle-section {
+            background: radial-gradient(circle at 30% 70%, rgba(138, 43, 226, 0.3) 0%, transparent 50%);
+            position: relative;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #FFD700;
+            border-radius: 50%;
+            animation: particleFloat 8s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10%, 90% { opacity: 1; }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Botón final */
+        .final-button {
+            background: linear-gradient(45deg, #FF6B9D, #C44569, #8E44AD, #3742FA);
+            background-size: 400% 400%;
+            border: none;
+            padding: 20px 60px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 3rem;
+            box-shadow: 0 15px 35px rgba(255, 107, 157, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: gradientShift 3s ease-in-out infinite, pulse 2s infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .final-button:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 25px 50px rgba(255, 107, 157, 0.6);
+        }
+
+        .final-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .final-button:hover::before {
+            left: 100%;
+        }
+
+        /* Reproductor oculto */
+        #backgroundMusic {
+            display: none;
+        }
+
+        /* Indicador de scroll */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            color: #FFD700;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 3rem;
+            }
+            
+            .love-text {
+                font-size: 1.8rem;
+            }
+            
+            .sunflower {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .section {
+                padding: 1rem;
+            }
+            
+            .final-button {
+                padding: 15px 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .love-text {
+                font-size: 1.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Efectos adicionales */
+        .shimmer {
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.5) 50%, transparent 70%);
+            background-size: 200% 200%;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% -200%; }
+            100% { background-position: 200% 200%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo galaxia -->
+    <div class="galaxy-background"></div>
+    <div class="stars"></div>
+
+    <!-- Música de fondo -->
+    <audio id="backgroundMusic" loop autoplay>
+        <source src="tu-cancion-favorita.mp3" type="audio/mpeg">
+        <!-- Reemplaza con la URL de tu canción -->
+    </audio>
+
+    <div class="main-container">
+        <!-- Sección Hero -->
+        <section class="section hero-section">
+            <h1 class="main-title">Mi Jardín Celestial de Flores</h1>
+            <p class="subtitle">Donde cada pétalo susurra tu nombre al universo</p>
+            <div class="scroll-indicator">
+                <div style="font-size: 2rem;">⬇</div>
+                <div style="font-size: 0.9rem; margin-top: 5px;">Descubre más</div>
+            </div>
+        </section>
+
+        <!-- Sección 1: Primer mensaje -->
+        <section class="section">
+            <div class="flower-field"></div>
+            <div class="love-message">
+                <div class="love-text">
+                    "Eres como un girasol en mi jardín del alma, 
+                    siempre buscando la luz que emana de tu corazón"
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 2: Mensaje especial del día 21 -->
+        <section class="section particle-section">
+            <div class="love-message">
+                <div class="love-text special">
+                    "Aunque no nos veamos este día 21, 
+                    no dejaría de demostrarte lo mucho que te pienso
+                    y espero que sea de tu agrado esta parte de mi universo
+                    creada especialmente para ti"
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 3: Mensaje con efecto typewriter -->
+        <section class="section">
+            <div class="love-message">
+                <div class="love-text typewriter">
+                    "En cada amanecer, tu sonrisa ilumina mi galaxia de flores"
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 4: Mensaje romántico -->
+        <section class="section">
+            <div class="love-message">
+                <div class="love-text">
+                    "Como los girasoles siguen al sol,
+                    mi corazón te sigue a ti por toda la eternidad"
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 5: Otro mensaje -->
+        <section class="section particle-section">
+            <div class="love-message">
+                <div class="love-text">
+                    "Eres mi estrella polar en este universo infinito,
+                    mi guía hacia el amor verdadero"
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 6: Mensaje de flores -->
+        <section class="section">
+            <div class="love-message">
+                <div class="love-text">
+                    "En este jardín celestial de girasoles y margaritas,
+                    cada flor susurra tu nombre al viento estelar"
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 7: Mensaje de distancia -->
+        <section class="section particle-section">
+            <div class="love-message">
+                <div class="love-text special">
+                    "La distancia no puede marchitar las flores
+                    que cultivo para ti en mi corazón"
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 8: Mensaje de pensamientos -->
+        <section class="section">
+            <div class="love-message">
+                <div class="love-text">
+                    "Cada pétalo dorado que cae del cielo
+                    lleva consigo un pensamiento tuyo"
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 9: Mensaje de promesa -->
+        <section class="section">
+            <div class="love-message">
+                <div class="love-text">
+                    "Prometo ser tu jardín eterno,
+                    donde siempre florezcan nuestros sueños"
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección final con botón -->
+        <section class="section" style="min-height: 100vh;">
+            <div class="love-message">
+                <div class="love-text" style="font-size: 3rem; margin-bottom: 3rem;">
+                    "¿Estás lista para nuestra próxima aventura 
+                    entre las estrellas y flores?"
+                </div>
+                <a href="login.php" class="final-button shimmer">
+                    🌟 Descubre una nueva galaxía 🌟
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Crear estrellas
+        function createStars() {
+            const starsContainer = document.querySelector('.stars');
+            const starCount = 200;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                const size = Math.random() > 0.8 ? 'big' : Math.random() > 0.6 ? 'medium' : 'small';
+                star.className = `star ${size}`;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Crear girasoles CSS
+        function createSunflowers() {
+            const sunflowerCount = 35; // Más girasoles
+            
+            for (let i = 0; i < sunflowerCount; i++) {
+                const sunflower = document.createElement('div');
+                sunflower.className = 'sunflower';
+                
+                // Crear pétalos
+                for (let j = 1; j <= 12; j++) {
+                    const petal = document.createElement('div');
+                    petal.className = 'sunflower-petal';
+                    sunflower.appendChild(petal);
+                }
+                
+                // Crear centro
+                const center = document.createElement('div');
+                center.className = 'sunflower-center';
+                sunflower.appendChild(center);
+                
+                sunflower.style.left = Math.random() * 95 + '%';
+                sunflower.style.top = Math.random() * 100 + 'vh';
+                sunflower.style.animationDelay = Math.random() * 4 + 's';
+                sunflower.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                
+                document.body.appendChild(sunflower);
+            }
+        }
+
+        // Crear flores amarillas pequeñas
+        function createYellowFlowers() {
+            const flowerCount = 50; // Muchas flores amarillas
+            
+            for (let i = 0; i < flowerCount; i++) {
+                const flower = document.createElement('div');
+                flower.className = 'yellow-flower';
+                
+                const petalsContainer = document.createElement('div');
+                petalsContainer.className = 'flower-petals';
+                
+                // Crear pétalos
+                for (let j = 1; j <= 5; j++) {
+                    const petal = document.createElement('div');
+                    petal.className = 'flower-petal';
+                    petalsContainer.appendChild(petal);
+                }
+                
+                // Crear centro
+                const center = document.createElement('div');
+                center.className = 'flower-center';
+                
+                flower.appendChild(petalsContainer);
+                flower.appendChild(center);
+                
+                flower.style.left = Math.random() * 100 + '%';
+                flower.style.top = Math.random() * 100 + 'vh';
+                flower.style.animationDelay = Math.random() * 5 + 's';
+                flower.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                
+                document.body.appendChild(flower);
+            }
+        }
+
+        // Crear margaritas
+        function createDaisies() {
+            const daisyCount = 30;
+            
+            for (let i = 0; i < daisyCount; i++) {
+                const daisy = document.createElement('div');
+                daisy.className = 'daisy';
+                
+                // Crear pétalos (más pétalos para margaritas)
+                for (let j = 0; j < 16; j++) {
+                    const petal = document.createElement('div');
+                    petal.className = 'daisy-petal';
+                    petal.style.transform = `translate(-50%, -100%) rotate(${j * 22.5}deg)`;
+                    daisy.appendChild(petal);
+                }
+                
+                // Crear centro
+                const center = document.createElement('div');
+                center.className = 'daisy-center';
+                daisy.appendChild(center);
+                
+                daisy.style.left = Math.random() * 100 + '%';
+                daisy.style.top = Math.random() * 100 + 'vh';
+                daisy.style.animationDelay = Math.random() * 6 + 's';
+                daisy.style.animationDuration = (Math.random() * 4 + 5) + 's';
+                
+                document.body.appendChild(daisy);
+            }
+        }
+
+        // Crear corazones flotantes
+        function createFloatingHearts() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.textContent = Math.random() > 0.5 ? '💖' : '💕';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 7000);
+            }, 1500); // Más frecuentes
+        }
+
+        // Crear pétalos cayendo
+        function createFallingPetals() {
+            setInterval(() => {
+                const petal = document.createElement('div');
+                petal.className = 'falling-petal';
+                petal.style.left = Math.random() * 100 + '%';
+                petal.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                petal.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(petal);
+
+                setTimeout(() => {
+                    petal.remove();
+                }, 10000);
+            }, 800); // Pétalos más frecuentes
+        }
+
+        // Crear partículas
+        function createParticles() {
+            const particleSections = document.querySelectorAll('.particle-section');
+            
+            particleSections.forEach(section => {
+                setInterval(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                    section.appendChild(particle);
+
+                    setTimeout(() => {
+                        particle.remove();
+                    }, 8000);
+                }, 200);
+            });
+        }
+
+        // Crear flores del campo
+        function createFlowerField() {
+            const flowerFields = document.querySelectorAll('.flower-field');
+            
+            flowerFields.forEach(field => {
+                for (let i = 0; i < 25; i++) {
+                    const flower = document.createElement('div');
+                    flower.className = 'yellow-flower';
+                    
+                    const petalsContainer = document.createElement('div');
+                    petalsContainer.className = 'flower-petals';
+                    
+                    // Crear pétalos
+                    for (let j = 1; j <= 5; j++) {
+                        const petal = document.createElement('div');
+                        petal.className = 'flower-petal';
+                        petalsContainer.appendChild(petal);
+                    }
+                    
+                    // Crear centro
+                    const center = document.createElement('div');
+                    center.className = 'flower-center';
+                    
+                    flower.appendChild(petalsContainer);
+                    flower.appendChild(center);
+                    
+                    flower.style.left = Math.random() * 100 + '%';
+                    flower.style.top = Math.random() * 100 + '%';
+                    flower.style.animationDelay = Math.random() * 5 + 's';
+                    flower.style.position = 'absolute';
+                    field.appendChild(flower);
+                }
+            });
+        }
+
+        // Animaciones en scroll
+        function handleScrollAnimations() {
+            const messages = document.querySelectorAll('.love-message');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            messages.forEach(message => {
+                observer.observe(message);
+            });
+        }
+
+        // Efecto parallax para flores
+        function handleParallax() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const flowers = document.querySelectorAll('.sunflower, .yellow-flower, .daisy');
+                const speed = 0.5;
+
+                flowers.forEach((element, index) => {
+                    const yPos = -(scrolled * speed * (index % 4 + 1) * 0.2);
+                    const rotation = scrolled * 0.05 * (index % 2 === 0 ? 1 : -1);
+                    element.style.transform = `translateY(${yPos}px) rotate(${rotation}deg)`;
+                });
+            });
+        }
+
+        // Efecto de click en flores
+        function addFlowerInteraction() {
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.sunflower, .yellow-flower, .daisy')) {
+                    // Crear pétalos que explotan
+                    for (let i = 0; i < 12; i++) {
+                        const petal = document.createElement('div');
+                        petal.className = 'falling-petal';
+                        petal.style.position = 'absolute';
+                        petal.style.left = e.pageX + 'px';
+                        petal.style.top = e.pageY + 'px';
+                        petal.style.pointerEvents = 'none';
+                        petal.style.animation = `explodePetal 3s ease-out forwards`;
+                        petal.style.animationDelay = (i * 0.1) + 's';
+                        
+                        // Dirección aleatoria para cada pétalo
+                        const angle = (i / 12) * 360;
+                        petal.style.setProperty('--angle', angle + 'deg');
+                        
+                        document.body.appendChild(petal);
+
+                        setTimeout(() => petal.remove(), 3000);
+                    }
+
+                    // Crear sparkles
+                    for (let i = 0; i < 8; i++) {
+                        const sparkle = document.createElement('div');
+                        sparkle.textContent = '✨';
+                        sparkle.style.position = 'absolute';
+                        sparkle.style.left = (e.pageX + Math.random() * 40 - 20) + 'px';
+                        sparkle.style.top = (e.pageY + Math.random() * 40 - 20) + 'px';
+                        sparkle.style.fontSize = '1.5rem';
+                        sparkle.style.pointerEvents = 'none';
+                        sparkle.style.animation = `sparkleOut 2s ease-out forwards`;
+                        sparkle.style.animationDelay = (i * 0.2) + 's';
+                        document.body.appendChild(sparkle);
+
+                        setTimeout(() => sparkle.remove(), 2000);
+                    }
+                }
+            });
+
+            // Agregar animaciones adicionales
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes explodePetal {
+                    0% { 
+                        transform: translateY(0) rotate(0deg) scale(1); 
+                        opacity: 1; 
+                    }
+                    100% { 
+                        transform: translateY(-150px) rotate(var(--angle, 0deg)) translateX(100px) scale(0.5); 
+                        opacity: 0; 
+                    }
+                }
+                @keyframes sparkleOut {
+                    0% { transform: scale(1) rotate(0deg); opacity: 1; }
+                    100% { transform: scale(2) rotate(360deg); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Ocultar indicador de scroll
+        function hideScrollIndicator() {
+            window.addEventListener('scroll', () => {
+                const indicator = document.querySelector('.scroll-indicator');
+                if (window.scrollY > 200) {
+                    indicator.style.opacity = '0';
+                } else {
+                    indicator.style.opacity = '1';
+                }
+            });
+        }
+
+        // Efecto de mouse para crear flores temporales
+        function addMouseFlowerEffect() {
+            let mouseTimeout;
+            document.addEventListener('mousemove', (e) => {
+                clearTimeout(mouseTimeout);
+                mouseTimeout = setTimeout(() => {
+                    if (Math.random() < 0.15) { // 15% de probabilidad
+                        const tempFlower = document.createElement('div');
+                        tempFlower.className = 'yellow-flower';
+                        tempFlower.style.position = 'absolute';
+                        tempFlower.style.left = e.clientX + 'px';
+                        tempFlower.style.top = e.clientY + 'px';
+                        tempFlower.style.pointerEvents = 'none';
+                        tempFlower.style.animation = 'mouseFlower 2s ease-out forwards';
+                        tempFlower.style.transform = 'translate(-50%, -50%)';
+                        tempFlower.style.zIndex = '999';
+
+                        // Crear estructura de la flor
+                        const petalsContainer = document.createElement('div');
+                        petalsContainer.className = 'flower-petals';
+                        
+                        for (let j = 1; j <= 5; j++) {
+                            const petal = document.createElement('div');
+                            petal.className = 'flower-petal';
+                            petalsContainer.appendChild(petal);
+                        }
+                        
+                        const center = document.createElement('div');
+                        center.className = 'flower-center';
+                        
+                        tempFlower.appendChild(petalsContainer);
+                        tempFlower.appendChild(center);
+                        
+                        document.body.appendChild(tempFlower);
+                        
+                        setTimeout(() => {
+                            tempFlower.remove();
+                        }, 2000);
+                    }
+                }, 50);
+            });
+
+            // Agregar animación de flores del mouse
+            const mouseStyle = document.createElement('style');
+            mouseStyle.textContent = `
+                @keyframes mouseFlower {
+                    0% { 
+                        opacity: 0; 
+                        transform: translate(-50%, -50%) scale(0) rotate(0deg); 
+                    }
+                    50% { 
+                        opacity: 1; 
+                        transform: translate(-50%, -50%) scale(1) rotate(180deg); 
+                    }
+                    100% { 
+                        opacity: 0; 
+                        transform: translate(-50%, -50%) scale(1.2) rotate(360deg); 
+                    }
+                }
+            `;
+            document.head.appendChild(mouseStyle);
+        }
+
+        // Inicializar todo
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            createSunflowers();
+            createYellowFlowers();
+            createDaisies();
+            createFloatingHearts();
+            createFallingPetals();
+            createParticles();
+            createFlowerField();
+            handleScrollAnimations();
+            handleParallax();
+            addFlowerInteraction();
+            hideScrollIndicator();
+            addMouseFlowerEffect();
+
+            // Intentar reproducir música
+            const audio = document.getElementById('backgroundMusic');
+            audio.volume = 0.3;
+            
+            // Para navegadores que bloquean autoplay
+            document.addEventListener('click', () => {
+                audio.play().catch(e => console.log('Audio blocked'));
+            }, { once: true });
+        });
+    </script>
+</body>
+</html>
